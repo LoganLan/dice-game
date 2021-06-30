@@ -6,11 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials/materials.module';
 import { StartPageComponent } from './start-page/start-page.component';
 
+import { MaterialModule } from './material/material.module';
+import { GameBoardPageComponent } from './game-board-page/game-board-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartPageComponent
+    StartPageComponent,
+    GameBoardPageComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +21,7 @@ import { StartPageComponent } from './start-page/start-page.component';
     MaterialsModule,
     
 
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

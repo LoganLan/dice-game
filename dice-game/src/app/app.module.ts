@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialsModule } from './materials/materials.module';
+import { MaterialModule } from './material/material.module';
 import { StartPageComponent } from './start-page/start-page.component';
 
-import { MaterialModule } from './material/material.module';
 import { GameBoardPageComponent } from './game-board-page/game-board-page.component';
 
 @NgModule({
@@ -18,9 +17,6 @@ import { GameBoardPageComponent } from './game-board-page/game-board-page.compon
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialsModule,
-    
-
     MaterialModule
   ],
   providers: [],

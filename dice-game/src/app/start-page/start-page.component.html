@@ -1,0 +1,34 @@
+
+<mat-grid-list cols="2" rowHeight="32vh" class="tiles-color">
+    <!--Grid Tiles 1 and 2 contain sliders for the number of players and dice per player-->
+
+    <mat-grid-tile class="tiles-color">
+        <ul>
+            <div class="slider-tiles">
+                <ul>Number Of Players</ul>
+                <ul><mat-slider thumbLabel tickInterval='1' min="2" max="4" step="1" value="1"></mat-slider></ul>
+            </div>
+        </ul>
+        
+    </mat-grid-tile>
+    <mat-grid-tile >
+        <ul>
+            <div class="slider-tiles">
+                <ul>Number Of Dice Per Player</ul>
+                <ul class="slider-color"><mat-slider thumbLabel tickInterval='1' min="1" max="4" step="1" value="1"></mat-slider></ul>
+            </div>
+        </ul>
+    </mat-grid-tile>
+</mat-grid-list>     
+<hr>
+<mat-grid-list cols="1" rowHeight="32vh">
+    <mat-grid-tile>
+        <button mat-raised-button color="warn">Start Game
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>   
+<hr>
+<mat-grid-list cols="1" rowHeight="32vh">
+    <mat-grid-tile >Instructions</mat-grid-tile>
+</mat-grid-list>
+    

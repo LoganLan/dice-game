@@ -14,10 +14,13 @@ mat-slider{
     width:10vw;
     justify-content: center;
 }
-.slider-color{
-  scrollbar-color: black;
+.tiles-color{
+    background-color: chartreuse;
 }
 button{
     height: 10vh;
     width: 40vw;
+}
+.instructions{
+    font-size: large;
 }

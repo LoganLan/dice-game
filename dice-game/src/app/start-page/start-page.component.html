@@ -27,33 +27,26 @@
       </div>
     </ul>
   </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile class="tiles-color">
     <ul>
-      <div class="slider-tiles">
-        
-    </mat-grid-tile>
-    <mat-grid-tile class="tiles-color">
-        <ul>
-          Number Of Dice Per Player
-        </ul>
-        <ul class="slider-color">
-          <mat-slider
-            #numberDice
-            thumbLabel
-            tickInterval="1"
-            min="1"
-            max="4"
-            step="1"
-            value="1"
-            (change)="updateNumberDiceSliderValue($event)"
-          ></mat-slider>
-        </ul>
-        <ul>
-          {{
-            numberDice.value
-          }}
-        </ul>
-      </div>
+      Number Of Dice Per Player
+    </ul>
+    <ul class="slider-color">
+      <mat-slider
+        #numberDice
+        thumbLabel
+        tickInterval="1"
+        min="1"
+        max="4"
+        step="1"
+        value="1"
+        (change)="updateNumberDiceSliderValue($event)"
+      ></mat-slider>
+    </ul>
+    <ul>
+      {{
+        numberDice.value
+      }}
     </ul>
   </mat-grid-tile>
 </mat-grid-list>
@@ -63,7 +56,7 @@
     <button
       mat-raised-button
       color="warn"
-      (click)="gotoGameBoardPage(numberDice.value,playerNumSliderValue.value)"
+      (click)="gotoGameBoardPage(numberDice.value, playerNumSliderValue.value)"
     >
       Start Game
     </button>
@@ -72,25 +65,25 @@
 <hr />
 <mat-grid-list cols="1" rowHeight="32vh">
   <mat-grid-tile>Instructions</mat-grid-tile>
-    </mat-grid-tile>
-</mat-grid-list>     
+</mat-grid-list>
 
 <mat-grid-list cols="1" rowHeight="32vh" class="tiles-color">
-    <mat-grid-tile>
-        <button mat-raised-button color="warn">Start Game</button>
-    </mat-grid-tile>
-</mat-grid-list>   
+  <mat-grid-tile>
+    <button mat-raised-button color="warn">Start Game</button>
+  </mat-grid-tile>
+</mat-grid-list>
 
-<mat-grid-list cols="1" rowHeight="32vh"class="tiles-color">
-    <mat-grid-tile>
-        
-        <ul>
-            <h1>Instructions</h1>
-            <li class="instructions">Pick the amount of players</li>
-            <li class="instructions">Choose the number of die per player</li>
-            <li class="instructions">Roll the die</li>
-            <li class="instructions">The player/s with the lowest roll loses a life</li>
-            <li class="instructions">Each player gets 6 lives</li>
-        </ul>
-    </mat-grid-tile>
+<mat-grid-list cols="1" rowHeight="32vh" class="tiles-color">
+  <mat-grid-tile>
+    <ul>
+      <h1>Instructions</h1>
+      <li class="instructions">Pick the amount of players</li>
+      <li class="instructions">Choose the number of die per player</li>
+      <li class="instructions">Roll the die</li>
+      <li class="instructions">
+        The player/s with the lowest roll loses a life
+      </li>
+      <li class="instructions">Each player gets 6 lives</li>
+    </ul>
+  </mat-grid-tile>
 </mat-grid-list>

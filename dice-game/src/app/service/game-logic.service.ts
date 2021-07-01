@@ -7,3 +7,11 @@ export class GameLogicService {
 
   constructor() { }
 }
+
+
+//player number array
+getPlayerNumber(){
+
+}
+
+

@@ -35,7 +35,7 @@
         </ul>
         <ul class="slider-color">
           <mat-slider
-          #numberDice
+            #numberDice
             thumbLabel
             tickInterval="1"
             min="1"
@@ -45,7 +45,11 @@
             (change)="updateNumberDiceSliderValue($event)"
           ></mat-slider>
         </ul>
-        <ul>{{numberDice.value}}</ul>
+        <ul>
+          {{
+            numberDice.value
+          }}
+        </ul>
       </div>
     </ul>
   </mat-grid-tile>
@@ -53,7 +57,13 @@
 <hr />
 <mat-grid-list cols="1" rowHeight="32vh">
   <mat-grid-tile>
-    <button mat-raised-button color="warn">Start Game</button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="gotoGameBoardPage(numberDice.value,playerNumSliderValue.value)"
+    >
+      Start Game
+    </button>
   </mat-grid-tile>
 </mat-grid-list>
 <hr />

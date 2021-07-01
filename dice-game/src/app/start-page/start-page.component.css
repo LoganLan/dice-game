@@ -1,0 +1,23 @@
+
+.tiles-color{
+    background-color: rgb(255, 252, 77);
+}
+.slider-tiles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+mat-slider{
+    width:10vw;
+    justify-content: center;
+}
+.slider-color{
+  scrollbar-color: black;
+}
+button{
+    height: 10vh;
+    width: 40vw;
+}

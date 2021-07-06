@@ -27,29 +27,29 @@
       </div>
     </ul>
   </mat-grid-tile>
-  
-  <mat-grid-tile >
+
+  <mat-grid-tile>
     <div class="slider-tiles">
-        <ul>
-            Number Of Dice Per Player
-        </ul>
-        <ul class="slider-color">
-            <mat-slider
-                #numberDice
-                thumbLabel
-                tickInterval="1"
-                min="1"
-                max="4"
-                step="1"
-                value="1"
-                (change)="updateNumberDiceSliderValue($event)"
-            ></mat-slider>
-        </ul>
-        <ul>
-            {{
-                numberDice.value
-            }}
-        </ul>
+      <ul>
+        Number Of Dice Per Player
+      </ul>
+      <ul class="slider-color">
+        <mat-slider
+          #numberDice
+          thumbLabel
+          tickInterval="1"
+          min="1"
+          max="4"
+          step="1"
+          value="1"
+          (change)="updateNumberDiceSliderValue($event)"
+        ></mat-slider>
+      </ul>
+      <ul>
+        {{
+          numberDice.value
+        }}
+      </ul>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

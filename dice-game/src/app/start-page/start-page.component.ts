@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras,Router } from '@angular/router';
-
+import { GameLogicService } from '../service/game-logic.service';
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
@@ -12,7 +12,7 @@ export class StartPageComponent implements OnInit {
   numberDice: number = 1;
  
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private gameLogic: GameLogicService) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +29,6 @@ export class StartPageComponent implements OnInit {
   //want to check to make sure the two values are passe to the game logic page
   gotoGameBoardPage(numberDice:number, playerNumberSliderValue:number){
     this.router.navigate(['game-board']);
+    this.gameLogic.getStartGamePicks(numberDice,playerNumberSliderValue)
   }
 }

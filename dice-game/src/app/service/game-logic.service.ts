@@ -1,3 +1,4 @@
+import { SlicePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { PlayersInfo } from '../model/playersinfo';
 
@@ -44,6 +45,14 @@ export class GameLogicService {
 
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
+    for (let i =0; i < this.numberOfPlayers; i++){
+      if (this.playerLivesNumberArray[i] === 0){
+        this.playersTotalScoreArray.splice(i,1);
+        this.playerLivesNumberArray.splice(i,1);
+              }
+    }
+    console.log(this.playersTotalScoreArray, 'players score')
+    console.log(this.playerLivesNumberArray, 'players lives')
     for (let i = 0; i < this.numberOfPlayers; i++) {
       let randomNumber = this.returnRandomNumber();
       this.playersTotalScoreArray[i] += randomNumber;

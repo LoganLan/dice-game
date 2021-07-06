@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StartPageComponent } from './start-page/start-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GameBoardPageComponent } from './game-board-page/game-board-page.component';
-import { WinningPageComponent } from './winning-page/winning';
+import { WinningPageComponent } from './winning-page/winning-page.component';
 
 
 

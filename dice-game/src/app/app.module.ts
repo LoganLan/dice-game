@@ -9,7 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { GameBoardPageComponent } from './game-board-page/game-board-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { WinningPageComponent } from './winning-page/winning';
+import { WinningPageComponent } from './winning-page/winning-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({

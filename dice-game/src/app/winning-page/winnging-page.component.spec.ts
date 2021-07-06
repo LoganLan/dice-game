@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WinningPageComponent } from './winning';
+import { WinningPageComponent } from './winning-page.component';
 
 describe('WinngingPageComponent', () => {
   let component: WinningPageComponent;

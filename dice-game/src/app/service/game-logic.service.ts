@@ -31,7 +31,11 @@ export class GameLogicService {
     for (let i = 0; i < this.numberOfPlayers; i++) {
       this.playerLivesNumberArray[i] = 6;
       this.playersTotalScoreArray[i] = 0;
-      this.diceRollArray[i] = 0;
+      this.diceRollArray[i] = [];
+      for (let j = 0; j < this.numberOfDice; j++) {
+        this.diceRollArray[i][j] = 0;
+
+      }
     }
   }
 
@@ -40,30 +44,37 @@ export class GameLogicService {
 
   // Gens a random number 1-6 times the number of dice
   returnRandomNumber() {
-    return Math.floor(Math.random() * (this.numberOfDice * 6)) + 1;
+    return Math.floor(Math.random() *6) + 1;
   }
 
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
-    for (let i =0; i < this.numberOfPlayers; i++){
-      if (this.playerLivesNumberArray[i] === 0){
-        this.playersTotalScoreArray.splice(i,1);
-        this.playerLivesNumberArray.splice(i,1);
-              }
+    for (let i = 0; i < this.numberOfPlayers; i++) {
+      if (this.playerLivesNumberArray[i] === 0) {
+        this.playersTotalScoreArray.splice(i, 1);
+        this.playerLivesNumberArray.splice(i, 1);
+      }
     }
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      let randomNumber = this.returnRandomNumber();
-      this.playersTotalScoreArray[i] += randomNumber;
-      this.diceRollArray[i] += randomNumber;
-      console.log(this.diceRollArray[i]);
+      for ( let j = 0; j < this.numberOfDice; j++) {
+        let randomNumber = this.returnRandomNumber();
+        this.playersTotalScoreArray[i] += randomNumber;
+        this.diceRollArray[i][j] += randomNumber;
+       
+      }
     }
+    console.log(this.diceRollArray, ' Dice Roll Array after loading');
   }
 
-  clearDiceRollArray() {
+  clearArrays() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      this.diceRollArray[i] = 0;
+      this.diceRollArray[i] = [];
+      this.playersTotalScoreArray[i] = 0;
+      for (let j = 0; j < this.numberOfDice; j++) {
+        this.diceRollArray[i][j] = 0;
+      }
     }
   }
 
@@ -126,7 +137,7 @@ export class GameLogicService {
 
   //for each button click Or "Roll"
   diceRollBTN() {
-    this.clearDiceRollArray();
+    this.clearArrays();
     this.returnRandomNumber();
     this.addDiceRoll();
     this.lowestIndexValue();

@@ -1,7 +1,7 @@
 import { SlicePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { PlayersInfo } from '../model/playersinfo';
-import { NavigationExtras,Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,14 @@ export class GameLogicService {
   playersTotalScoreArray: any = [];
   playerLivesNumberArray: any = [];
 
-  diceRollArray: any = [];
+  diceRollArray: any[][] = [];
 
-  constructor(private router:Router) { }
+  playerOneDiceRolls: any = [];
+  playerTwoDiceRolls: any = [];
+  playersThreeDiceRolls: any = [];
+  playersFourDiceRolls: any = [];
+
+  constructor(private router: Router) { }
 
 
 
@@ -34,17 +39,21 @@ export class GameLogicService {
     for (let i = 0; i < this.numberOfPlayers; i++) {
       this.playerLivesNumberArray[i] = 6;
       this.playersTotalScoreArray[i] = 0;
-      this.diceRollArray[i] = 0;
+      this.diceRollArray[i] = [];
+      for (let j = 0; j < this.numberOfDice; j++) {
+        this.diceRollArray[i][j] = 0;
+
+      }
     }
   }
-  gotoWinningPage(){
+  gotoWinningPage() {
     console.log("why Dis Not Working")
-      this.router.navigate(['winning-page']);
+    this.router.navigate(['winning-page']);
     // }
     // else{
     //   console.log("Dis Not Work")
     // }
-    
+
   }
 
 
@@ -52,42 +61,49 @@ export class GameLogicService {
 
   // Gens a random number 1-6 times the number of dice
   returnRandomNumber() {
-    return Math.floor(Math.random() * (this.numberOfDice * 6)) + 1;
+    return Math.floor(Math.random() * 6) + 1;
   }
 
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
-    for (let i =0; i < this.numberOfPlayers; i++){
-      if (this.playerLivesNumberArray[i] === 0){
-        this.playersTotalScoreArray.splice(i,1);
-        this.playerLivesNumberArray.splice(i,1);
-        this.numberOfAlivePlayers -=1;
+    for (let i = 0; i < this.numberOfPlayers; i++) {
+      if (this.playerLivesNumberArray[i] === 0) {
+        this.playersTotalScoreArray.splice(i, 1);
+        this.playerLivesNumberArray.splice(i, 1);
+        this.numberOfAlivePlayers -= 1;
         console.log([this.numberOfAlivePlayers], 'number of alive players')
-              }
-      if (this.numberOfAlivePlayers === 1){
-          //console.log("I got Broked")
-          break
-        }
+      }
+      if (this.numberOfAlivePlayers === 1) {
+        //console.log("I got Broked")
+        break
+      }
     }
-  
-    if (this.numberOfAlivePlayers === 1){
+
+    if (this.numberOfAlivePlayers === 1) {
       console.log('go to winning page')
       this.gotoWinningPage()
     }
-   
+
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      let randomNumber = this.returnRandomNumber();
-      this.playersTotalScoreArray[i] += randomNumber;
-      this.diceRollArray[i] += randomNumber;
-      console.log(this.diceRollArray[i]);
+      for (let j = 0; j < this.numberOfDice; j++) {
+        let randomNumber = this.returnRandomNumber();
+        this.playersTotalScoreArray[i] += randomNumber;
+        this.diceRollArray[i][j] += randomNumber;
+
+      }
     }
+    console.log(this.diceRollArray, ' Dice Roll Array after loading');
   }
 
-  clearDiceRollArray() {
+  clearArrays() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      this.diceRollArray[i] = 0;
+      this.diceRollArray[i] = [];
+      this.playersTotalScoreArray[i] = 0;
+      for (let j = 0; j < this.numberOfDice; j++) {
+        this.diceRollArray[i][j] = 0;
+      }
     }
   }
 
@@ -150,7 +166,7 @@ export class GameLogicService {
 
   //for each button click Or "Roll"
   diceRollBTN() {
-    this.clearDiceRollArray();
+    this.clearArrays();
     this.returnRandomNumber();
     this.addDiceRoll();
     this.lowestIndexValue();

@@ -68,8 +68,8 @@ export class GameLogicService {
   addDiceRoll() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
       if (this.playerLivesNumberArray[i] === 0) {
-        this.playersTotalScoreArray.splice(i, 1, ' ');
-        this.playerLivesNumberArray.splice(i, 1, ' ');
+        this.playersTotalScoreArray.splice(i, 1, NaN);
+        this.playerLivesNumberArray.splice(i, 1, NaN);
         this.numberOfAlivePlayers -= 1;
         console.log([this.numberOfAlivePlayers], 'number of alive players')
       }

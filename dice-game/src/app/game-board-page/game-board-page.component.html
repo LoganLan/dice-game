@@ -50,27 +50,23 @@
   <div class="gameboard-container">
     <div class="row game-board-row-1 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 1 && playersLives[0] > 0" class="text-display">
-        <div>Player 1 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[0] let i = index">{{diceRolls[0][i]}}</div>
+        player 1 Dice Roll:{{ diceRolls[0] }}
       </div>
     </div>
     <div class="row game-board-row-2 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 3 && playersLives[2] > 0" class="text-display">
-        <div>Player 3 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[2] let i = index">{{diceRolls[2][i]}}</div>
+        Player 3 Dice Roll:{{ diceRolls[2] }}
       </div>
       <div>
         <button (click)="btnDiceRoll()">Roll</button>
       </div>
       <div *ngIf="numberOfPlayers >= 4 && playersLives[3] > 0" class="text-display">
-        <div>Player 4 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[3] let i = index">{{diceRolls[3][i]}}</div>
+        Player 4 Dice:{{ diceRolls[3] }}
       </div>
     </div>
     <div class="row game-board-row-3 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 2 && playersLives[1] > 0" class="text-display">
-        <div>Player 4 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[1] let i = index">{{diceRolls[1][i]}}</div>
+        Player 2 Dice:{{ diceRolls[1] }}
       </div>
     </div>
   </div>

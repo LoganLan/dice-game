@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras,Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-winning-page',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinningPageComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router:Router) { }
   ngOnInit(): void {
   }
 
+
+    
+  gotoStartPage(){
+    this.router.navigate(['']);
+  }
+      
+
+    
+    
+    
+
+
+
 }
+  
+
+

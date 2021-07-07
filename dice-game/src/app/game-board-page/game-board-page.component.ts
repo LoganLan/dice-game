@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GameLogicService } from '../service/game-logic.service';
 import { PlayersInfo } from '../model/playersinfo';
+import { NavigationExtras,Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-board-page',
@@ -11,12 +12,13 @@ import { PlayersInfo } from '../model/playersinfo';
 export class GameBoardPageComponent implements OnInit {
 
   numberOfPlayers!: any;
+  numberOfAlivePlayers!: number;
   numberOfDices!: void;
   playersLives: any = [];
   playersScore: any = []
   diceRolls: any = [];
 
-  constructor(private gameLogic: GameLogicService) { }
+  constructor(private gameLogic: GameLogicService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -26,18 +28,29 @@ export class GameBoardPageComponent implements OnInit {
   gameStart(): any {
     this.numberOfDices = this.gameLogic.returnNumberOfDice();
     this.numberOfPlayers = this.gameLogic.returnNumberOfPlayers();
+    this.numberOfAlivePlayers = this.gameLogic.returnNumberOfAlivePlayers();
     this.playersLives = this.gameLogic.returnPlayersLivesNumber();
     this.playersScore = this.gameLogic.returnPlayerTotalScore();
 
     console.log(this.numberOfPlayers, 'Player Num');
     console.log(this.numberOfDices, 'Dice Num');
     console.log(this.playersLives, ' players Lives');
+    console.log(this.numberOfAlivePlayers, 'number of alive players');
   }
 
   btnDiceRoll(): any {
     this.gameLogic.diceRollBTN();
     this.diceRolls = this.gameLogic.returnDiceRolls();
 
+  }
+  gotoWinningPage(){
+    console.log("why Dis Not Working")
+      this.router.navigate(['winning-page']);
+    // }
+    // else{
+    //   console.log("Dis Not Work")
+    // }
+    
   }
 
 }

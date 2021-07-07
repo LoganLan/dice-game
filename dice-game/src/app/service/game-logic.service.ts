@@ -1,6 +1,7 @@
 import { SlicePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { PlayersInfo } from '../model/playersinfo';
+import { NavigationExtras,Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { PlayersInfo } from '../model/playersinfo';
 export class GameLogicService {
 
   numberOfPlayers!: number;
+  numberOfAlivePlayers!: number;
   numberOfDice!: number;
 
   playersTotalScoreArray: any = [];
@@ -15,7 +17,7 @@ export class GameLogicService {
 
   diceRollArray: any = [];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
 
 
@@ -23,7 +25,8 @@ export class GameLogicService {
   // To start the game 
   getStartGamePicks(numberOfDice: number, numberOfPlayers: number) {
     this.numberOfPlayers = numberOfPlayers;
-    this.numberOfDice = numberOfDice
+    this.numberOfDice = numberOfDice;
+    this.numberOfAlivePlayers = numberOfPlayers;
     this.initStartGame();
   }
 
@@ -33,6 +36,15 @@ export class GameLogicService {
       this.playersTotalScoreArray[i] = 0;
       this.diceRollArray[i] = 0;
     }
+  }
+  gotoWinningPage(){
+    console.log("why Dis Not Working")
+      this.router.navigate(['winning-page']);
+    // }
+    // else{
+    //   console.log("Dis Not Work")
+    // }
+    
   }
 
 
@@ -49,8 +61,20 @@ export class GameLogicService {
       if (this.playerLivesNumberArray[i] === 0){
         this.playersTotalScoreArray.splice(i,1);
         this.playerLivesNumberArray.splice(i,1);
+        this.numberOfAlivePlayers -=1;
+        console.log([this.numberOfAlivePlayers], 'number of alive players')
               }
+      if (this.numberOfAlivePlayers === 1){
+          //console.log("I got Broked")
+          break
+        }
     }
+  
+    if (this.numberOfAlivePlayers === 1){
+      console.log('go to winning page')
+      this.gotoWinningPage()
+    }
+   
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
     for (let i = 0; i < this.numberOfPlayers; i++) {
@@ -134,9 +158,14 @@ export class GameLogicService {
   }
 
 
+
+
   //The Returns to the GameBoard
   returnNumberOfPlayers(): any {
     return this.numberOfPlayers;
+  }
+  returnNumberOfAlivePlayers(): any {
+    return this.numberOfAlivePlayers
   }
 
   returnNumberOfDice(): any {

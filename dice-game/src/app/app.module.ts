@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WinningPageComponent } from './winning-page/winning-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { NoOneWinsPageComponent } from './no-one-wins-page/no-one-wins-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StartPageComponent } from './start-page/start-page.component';
     StartPageComponent,
     GameBoardPageComponent,
     PageNotFoundComponent,
-    WinningPageComponent
+    WinningPageComponent,
+    NoOneWinsPageComponent
   ],
   imports: [
     BrowserModule,

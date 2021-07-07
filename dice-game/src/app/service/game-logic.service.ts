@@ -46,6 +46,7 @@ export class GameLogicService {
       }
     }
   }
+  //creates a route to the winning page once there is only 1 player remaining
   gotoWinningPage() {
     console.log("why Dis Not Working")
     this.router.navigate(['winning-page']);
@@ -53,6 +54,12 @@ export class GameLogicService {
     // else{
     //   console.log("Dis Not Work")
     // }
+
+  }
+  gotoNoOneWinsPage() {
+    console.log("The chances are slim")
+    this.router.navigate(['no-one-wins-page']);
+    
 
   }
 
@@ -67,22 +74,27 @@ export class GameLogicService {
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
+      
       if (this.playerLivesNumberArray[i] === 0) {
         this.playersTotalScoreArray.splice(i, 1, NaN);
         this.playerLivesNumberArray.splice(i, 1, NaN);
         this.numberOfAlivePlayers -= 1;
-        console.log([this.numberOfAlivePlayers], 'number of alive players')
+        console.log([this.numberOfAlivePlayers], "number of alive players")
       }
       if (this.numberOfAlivePlayers === 1) {
         //console.log("I got Broked")
-        break
+        
+      console.log('go to winning page')
+      this.gotoWinningPage()
+      }
+      if (this.numberOfAlivePlayers === 0) {
+        
+      console.log('No one wins')
+      this.gotoNoOneWinsPage()
       }
     }
 
-    if (this.numberOfAlivePlayers === 1) {
-      console.log('go to winning page')
-      this.gotoWinningPage()
-    }
+    
 
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')

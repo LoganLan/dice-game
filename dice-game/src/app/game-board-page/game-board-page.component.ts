@@ -43,14 +43,5 @@ export class GameBoardPageComponent implements OnInit {
     this.diceRolls = this.gameLogic.returnDiceRolls();
 
   }
-  gotoWinningPage(){
-    console.log("why Dis Not Working")
-      this.router.navigate(['winning-page']);
-    // }
-    // else{
-    //   console.log("Dis Not Work")
-    // }
-    
-  }
 
 }

@@ -3,7 +3,7 @@
 .slider-tiles{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     flex-direction: column;
     
 }
@@ -43,6 +43,7 @@ mat-slider{
 
 .tiles-color{
     background-color: chartreuse;
+   
 }
 button{
     height: 10vh;

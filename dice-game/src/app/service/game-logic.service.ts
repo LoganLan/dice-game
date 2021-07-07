@@ -13,7 +13,12 @@ export class GameLogicService {
   playersTotalScoreArray: any = [];
   playerLivesNumberArray: any = [];
 
-  diceRollArray: any = [];
+  diceRollArray: any[][] = [];
+
+  playerOneDiceRolls: any = [];
+  playerTwoDiceRolls: any = [];
+  playersThreeDiceRolls: any = [];
+  playersFourDiceRolls: any = [];
 
   constructor() { }
 
@@ -57,6 +62,13 @@ export class GameLogicService {
     }
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
+    // for (let i = 0; i < this.numberOfPlayers; i++) {
+    //   let randomNumber = this.returnRandomNumber();
+    //   this.playersTotalScoreArray[i] += randomNumber;
+    //   this.diceRollArray[i] += randomNumber;
+    //   console.log(this.diceRollArray[i]);
+    // }
+
     for (let i = 0; i < this.numberOfPlayers; i++) {
       for ( let j = 0; j < this.numberOfDice; j++) {
         let randomNumber = this.returnRandomNumber();

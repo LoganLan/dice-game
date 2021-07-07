@@ -10,7 +10,7 @@
         <ul>
           <mat-slider
             #playerNumSliderValue
-            thumbLabel
+            class="slider-color"
             tickInterval="1"
             min="2"
             max="4"
@@ -33,10 +33,11 @@
       <ul>
         Number Of Dice Per Player
       </ul>
-      <ul class="slider-color">
+      <ul >
         <mat-slider
           #numberDice
-          thumbLabel
+          
+         
           tickInterval="1"
           min="1"
           max="4"
@@ -70,9 +71,9 @@
   <mat-grid-tile>
     <ul>
       <h1>Instructions</h1>
-      <li class="instructions">Pick the amount of players</li>
+      <li class="instructions">Choose the number of players</li>
       <li class="instructions">Choose the number of die per player</li>
-      <li class="instructions">Roll the die</li>
+      <li class="instructions">Roll the dice</li>
       <li class="instructions">
         The player/s with the lowest roll loses a life
       </li>

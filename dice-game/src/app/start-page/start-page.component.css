@@ -1,7 +1,5 @@
 
-.tiles-color{
-    background-color: rgb(255, 252, 77);
-}
+
 .slider-tiles{
     display: flex;
     justify-content: center;
@@ -10,11 +8,39 @@
     
 }
 
+::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: black;
+    opacity: 100;
+    border-color: rgb(0, 0, 0);
+} 
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: black;
+    opacity: 100;
+    border-color: rgb(0, 0, 0);
+} 
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: black;
+    opacity: 100;
+    border-color: rgb(0, 0, 0);
+} 
+::ng-deep .mat-accent .mat-slider-thumb-label-showing{
+    background-color: black;
+    opacity: 100;
+    border-color: rgb(0, 0, 0);
+}
+::ng-deep .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+    border-color: rgb(0, 0, 0);
+    background-color: #000000;
+}
 
-mat-slider{
+mat-slider{ 
     width:10vw;
     justify-content: center;
+    color:"primary";
+    ;
 }
+
+
 .tiles-color{
     background-color: chartreuse;
 }

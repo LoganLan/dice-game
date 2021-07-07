@@ -68,8 +68,8 @@ export class GameLogicService {
   addDiceRoll() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
       if (this.playerLivesNumberArray[i] === 0) {
-        this.playersTotalScoreArray.splice(i, 1);
-        this.playerLivesNumberArray.splice(i, 1);
+        this.playersTotalScoreArray.splice(i, 1, ' ');
+        this.playerLivesNumberArray.splice(i, 1, ' ');
         this.numberOfAlivePlayers -= 1;
         console.log([this.numberOfAlivePlayers], 'number of alive players')
       }
@@ -114,12 +114,12 @@ export class GameLogicService {
     let lowestIndexValueArray = [];
     let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
 
-    for (let i = 1; i < this.numberOfPlayers; i++) {
+    for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray[i] < this.playersTotalScoreArray[lowestIndexValue]) {
         lowestIndexValue = i;
       }
     }
-    for (let i = 1; i < this.numberOfPlayers; i++) {
+    for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]) !== this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i])) {
         const firstMatchingIndex = this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]);
         const secondMatchingIndex = this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i]);

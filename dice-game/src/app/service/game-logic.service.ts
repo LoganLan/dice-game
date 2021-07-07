@@ -66,7 +66,7 @@ export class GameLogicService {
 
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
-    for (let i = 0; i < this.numberOfPlayers; i++) {
+    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
       if (this.playerLivesNumberArray[i] === 0) {
         this.playersTotalScoreArray.splice(i, 1);
         this.playerLivesNumberArray.splice(i, 1);
@@ -86,7 +86,7 @@ export class GameLogicService {
 
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
-    for (let i = 0; i < this.numberOfPlayers; i++) {
+    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
       for (let j = 0; j < this.numberOfDice; j++) {
         let randomNumber = this.returnRandomNumber();
         this.playersTotalScoreArray[i] += randomNumber;
@@ -98,7 +98,7 @@ export class GameLogicService {
   }
 
   clearArrays() {
-    for (let i = 0; i < this.numberOfPlayers; i++) {
+    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
       this.diceRollArray[i] = [];
       this.playersTotalScoreArray[i] = 0;
       for (let j = 0; j < this.numberOfDice; j++) {
@@ -114,12 +114,12 @@ export class GameLogicService {
     let lowestIndexValueArray = [];
     let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
 
-    for (let i = 1; i < this.numberOfPlayers; i++) {
+    for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray[i] < this.playersTotalScoreArray[lowestIndexValue]) {
         lowestIndexValue = i;
       }
     }
-    for (let i = 1; i < this.numberOfPlayers; i++) {
+    for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]) !== this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i])) {
         const firstMatchingIndex = this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]);
         const secondMatchingIndex = this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i]);

@@ -66,10 +66,10 @@ export class GameLogicService {
 
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
-    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
+    for (let i = 0; i < this.numberOfPlayers; i++) {
       if (this.playerLivesNumberArray[i] === 0) {
-        this.playersTotalScoreArray.splice(i, 1);
-        this.playerLivesNumberArray.splice(i, 1);
+        this.playersTotalScoreArray.splice(i, 1, ' ');
+        this.playerLivesNumberArray.splice(i, 1, ' ');
         this.numberOfAlivePlayers -= 1;
         console.log([this.numberOfAlivePlayers], 'number of alive players')
       }
@@ -86,7 +86,7 @@ export class GameLogicService {
 
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
-    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
+    for (let i = 0; i < this.numberOfPlayers; i++) {
       for (let j = 0; j < this.numberOfDice; j++) {
         let randomNumber = this.returnRandomNumber();
         this.playersTotalScoreArray[i] += randomNumber;
@@ -98,7 +98,7 @@ export class GameLogicService {
   }
 
   clearArrays() {
-    for (let i = 0; i < this.numberOfAlivePlayers; i++) {
+    for (let i = 0; i < this.numberOfPlayers; i++) {
       this.diceRollArray[i] = [];
       this.playersTotalScoreArray[i] = 0;
       for (let j = 0; j < this.numberOfDice; j++) {

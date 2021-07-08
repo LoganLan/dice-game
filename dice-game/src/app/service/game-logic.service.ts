@@ -15,7 +15,7 @@ export class GameLogicService {
   playersTotalScoreArray: any = [];
   playerLivesNumberArray: any = [];
 
-  diceRollArray: any[][] = [];
+  diceRollArray: number[][] = [];
 
   playerOneDiceRolls: any = [];
   playerTwoDiceRolls: any = [];
@@ -59,7 +59,7 @@ export class GameLogicService {
   gotoNoOneWinsPage() {
     console.log("The chances are slim")
     this.router.navigate(['no-one-wins-page']);
-    
+
 
   }
 
@@ -74,47 +74,49 @@ export class GameLogicService {
   //Calls the Random Number Gen and Adds then to the Player total score
   addDiceRoll() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      
-      if (this.playerLivesNumberArray[i] === 0) {
+
+      if (this.playerLivesNumberArray[i] === 0 || this.playerLivesNumberArray[i] == NaN || this.playersTotalScoreArray[i] == NaN) {
         this.playersTotalScoreArray.splice(i, 1, NaN);
         this.playerLivesNumberArray.splice(i, 1, NaN);
         this.numberOfAlivePlayers -= 1;
         console.log([this.numberOfAlivePlayers], "number of alive players")
+        for (let j = 0; j < this.numberOfDice; j++) {
+          this.diceRollArray[i][j] = NaN;
+        }
+
+      } else if (this.playerLivesNumberArray[i] !== NaN || this.playersTotalScoreArray[i] !== NaN) {
+        for (let j = 0; j < this.numberOfDice; j++) {
+          let randomNumber = this.returnRandomNumber();
+          this.playersTotalScoreArray[i] += randomNumber;
+          this.diceRollArray[i][j] += randomNumber;
+
+        }
       }
       if (this.numberOfAlivePlayers === 1) {
         //console.log("I got Broked")
-        
-      console.log('go to winning page')
-      this.gotoWinningPage()
+
+        console.log('go to winning page')
+        this.gotoWinningPage()
       }
       if (this.numberOfAlivePlayers === 0) {
-        
-      console.log('No one wins')
-      this.gotoNoOneWinsPage()
+
+        console.log('No one wins')
+        this.gotoNoOneWinsPage()
       }
     }
-
-    
-
     console.log(this.playersTotalScoreArray, 'players score')
     console.log(this.playerLivesNumberArray, 'players lives')
-    for (let i = 0; i < this.numberOfPlayers; i++) {
-      for (let j = 0; j < this.numberOfDice; j++) {
-        let randomNumber = this.returnRandomNumber();
-        this.playersTotalScoreArray[i] += randomNumber;
-        this.diceRollArray[i][j] += randomNumber;
-
-      }
-    }
     console.log(this.diceRollArray, ' Dice Roll Array after loading');
   }
 
   clearArrays() {
     for (let i = 0; i < this.numberOfPlayers; i++) {
-      this.diceRollArray[i] = [];
-      this.playersTotalScoreArray[i] = 0;
-      for (let j = 0; j < this.numberOfDice; j++) {
-        this.diceRollArray[i][j] = 0;
+      if (this.playerLivesNumberArray[i] > 0 && this.playerLivesNumberArray[i] !== NaN && this.playersTotalScoreArray[i] !== NaN) {
+        this.diceRollArray[i] = [];
+        this.playersTotalScoreArray[i] = 0;
+        for (let j = 0; j < this.numberOfDice; j++) {
+          this.diceRollArray[i][j] = 0;
+        }
       }
     }
   }

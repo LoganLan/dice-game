@@ -126,7 +126,10 @@ export class GameLogicService {
   lowestIndexValue() {
     let lowestIndexValue = 0;
     let lowestIndexValueArray = [];
-    let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
+    //let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
+    let  smallestValueInArrayNaN = Math.min.apply(null, this.playersTotalScoreArray.filter(function(n: number) { return !isNaN(n); }));
+    //console.log(lowestValueInArray, 'lowest with NaN')
+    console.log(smallestValueInArrayNaN, 'smallest Value in Array that !NaN');
 
     for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray[i] < this.playersTotalScoreArray[lowestIndexValue]) {
@@ -137,7 +140,7 @@ export class GameLogicService {
       if (this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]) !== this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i])) {
         const firstMatchingIndex = this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]);
         const secondMatchingIndex = this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i]);
-        if (lowestValueInArray === this.playersTotalScoreArray[firstMatchingIndex] || lowestValueInArray === this.playersTotalScoreArray[secondMatchingIndex]) {
+        if (smallestValueInArrayNaN === this.playersTotalScoreArray[firstMatchingIndex] || smallestValueInArrayNaN === this.playersTotalScoreArray[secondMatchingIndex]) {
           lowestIndexValueArray.push(this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]))
           lowestIndexValueArray.push(this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i]))
           return lowestIndexValueArray;

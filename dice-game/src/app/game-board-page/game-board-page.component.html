@@ -51,26 +51,34 @@
     <div class="row game-board-row-1 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 1 && playersLives[0] > 0" class="text-display">
         <div>Player 1 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[0] let i = index">{{diceRolls[0][i]}}</div>
+        <div class="dice-imgs" *ngFor="let dices of diceRolls[0] let i = index">
+          <img src="./assets/{{diceRolls[0][i]}}.png" alt=""style="width: 25px" >    
+        </div>
       </div>
     </div>
     <div class="row game-board-row-2 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 3 && playersLives[2] > 0" class="text-display">
         <div>Player 3 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[2] let i = index">{{diceRolls[2][i]}}</div>
+        <div class="dice-imgs" *ngFor="let dices of diceRolls[2] let i = index">
+          <img src="./assets/{{diceRolls[2][i]}}.png" alt=""style="width: 25px" >    
+        </div>
       </div>
       <div>
-        <button (click)="btnDiceRoll()">Roll</button>
+        <button (click)="btnDiceRoll()" mat-raised-button color="primary">Roll</button>
       </div>
       <div *ngIf="numberOfPlayers >= 4 && playersLives[3] > 0" class="text-display">
         <div>Player 4 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[3] let i = index">{{diceRolls[3][i]}}</div>
+        <div class="dice-imgs" *ngFor="let dices of diceRolls[3] let i = index">
+          <img src="./assets/{{diceRolls[3][i]}}.png" alt=""style="width: 25px" >    
+        </div>
       </div>
     </div>
     <div class="row game-board-row-3 gameboard-subfield">
       <div *ngIf="numberOfPlayers >= 2 && playersLives[1] > 0" class="text-display">
-        <div>Player 4 Dice Rolls: </div>
-        <div *ngFor="let dice of diceRolls[1] let i = index">{{diceRolls[1][i]}}</div>
+        <div>Player 2 Dice Rolls: </div>
+        <div class="dice-imgs" *ngFor="let dices of diceRolls[1] let i = index">
+          <img src="./assets/{{diceRolls[1][i]}}.png" alt=""style="width: 25px" >        
+        </div>
       </div>
     </div>
   </div>

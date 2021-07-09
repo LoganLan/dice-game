@@ -3,6 +3,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { GameLogicService } from '../service/game-logic.service';
 import { PlayersInfo } from '../model/playersinfo';
 import { NavigationExtras,Router } from '@angular/router';
+import { applySourceSpanToStatementIfNeeded } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-game-board-page',
@@ -18,7 +19,18 @@ export class GameBoardPageComponent implements OnInit {
   playersScore: any = []
   diceRolls: any = [];
 
-  constructor(private gameLogic: GameLogicService, private router:Router) { }
+  dice:any[] =[]
+
+  constructor(private gameLogic: GameLogicService, private router:Router) { 
+    this.dice = [
+      {id: 1, path:"./assets/1.png"},
+      {id: 2, path:"./assets/2.png"},
+      {id: 3, path:"./assets/3.png"},
+      {id: 4, path:"./assets/4.png"},
+      {id: 5, path:"./assets/5.png"},
+      {id: 6, path:"./assets/6.png"},
+    ]
+  }
 
   ngOnInit(): void {
 

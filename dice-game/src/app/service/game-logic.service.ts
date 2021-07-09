@@ -21,6 +21,7 @@ export class GameLogicService {
   playerTwoDiceRolls: any = [];
   playersThreeDiceRolls: any = [];
   playersFourDiceRolls: any = [];
+  winningPlayer: number = 0;
 
   constructor(private router: Router) { }
 
@@ -94,9 +95,18 @@ export class GameLogicService {
       }
       if (this.numberOfAlivePlayers === 1) {
         //console.log("I got Broked")
+        
+
+        let smallestValueInArrayNaN = Math.max.apply(null, this.playersTotalScoreArray.filter(function(n: number) { return !isNaN(n); }));
+        this.winningPlayer = this.playersTotalScoreArray.indexOf(smallestValueInArrayNaN) + 1;
+         
+        console.log(this.winningPlayer,'last person remaining')
+
+
 
         console.log('go to winning page')
         this.gotoWinningPage()
+        
       }
       if (this.numberOfAlivePlayers === 0) {
 
@@ -128,14 +138,13 @@ export class GameLogicService {
     let lowestIndexValueArray = [];
     //let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
     let  smallestValueInArrayNaN = Math.min.apply(null, this.playersTotalScoreArray.filter(function(n: number) { return !isNaN(n); }));
-    //console.log(lowestValueInArray, 'lowest with NaN')
+    console.log(smallestValueInArrayNaN, 'lowest with NaN');
+    
     console.log(smallestValueInArrayNaN, 'smallest Value in Array that !NaN');
+    console.log(this.playersTotalScoreArray.indexOf(smallestValueInArrayNaN), 'Check smallest index !NaN');
 
-    for (let i = 1; i < this.numberOfAlivePlayers; i++) {
-      if (this.playersTotalScoreArray[i] < this.playersTotalScoreArray[lowestIndexValue]) {
-        lowestIndexValue = i;
-      }
-    }
+    lowestIndexValue = this.playersTotalScoreArray.indexOf(smallestValueInArrayNaN);
+
     for (let i = 1; i < this.numberOfAlivePlayers; i++) {
       if (this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]) !== this.playersTotalScoreArray.lastIndexOf(this.playersTotalScoreArray[i])) {
         const firstMatchingIndex = this.playersTotalScoreArray.indexOf(this.playersTotalScoreArray[i]);
@@ -214,6 +223,9 @@ export class GameLogicService {
   }
   returnDiceRolls() {
     return this.diceRollArray;
+  }
+  returnWinningPlayer(): number {
+    return this.winningPlayer;
   }
 
 }

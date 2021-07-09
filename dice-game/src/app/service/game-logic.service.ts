@@ -95,18 +95,18 @@ export class GameLogicService {
       }
       if (this.numberOfAlivePlayers === 1) {
         //console.log("I got Broked")
-        
 
-        let smallestValueInArrayNaN = Math.max.apply(null, this.playersTotalScoreArray.filter(function(n: number) { return !isNaN(n); }));
+
+        let smallestValueInArrayNaN = Math.max.apply(null, this.playersTotalScoreArray.filter(function (n: number) { return !isNaN(n); }));
         this.winningPlayer = this.playersTotalScoreArray.indexOf(smallestValueInArrayNaN) + 1;
-         
-        console.log(this.winningPlayer,'last person remaining')
+
+        console.log(this.winningPlayer, 'last person remaining')
 
 
 
         console.log('go to winning page')
         this.gotoWinningPage()
-        
+
       }
       if (this.numberOfAlivePlayers === 0) {
 
@@ -137,9 +137,9 @@ export class GameLogicService {
     let lowestIndexValue = 0;
     let lowestIndexValueArray = [];
     //let lowestValueInArray = Math.min(...this.playersTotalScoreArray);
-    let  smallestValueInArrayNaN = Math.min.apply(null, this.playersTotalScoreArray.filter(function(n: number) { return !isNaN(n); }));
+    let smallestValueInArrayNaN = Math.min.apply(null, this.playersTotalScoreArray.filter(function (n: number) { return !isNaN(n); }));
     console.log(smallestValueInArrayNaN, 'lowest with NaN');
-    
+
     console.log(smallestValueInArrayNaN, 'smallest Value in Array that !NaN');
     console.log(this.playersTotalScoreArray.indexOf(smallestValueInArrayNaN), 'Check smallest index !NaN');
 

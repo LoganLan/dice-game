@@ -1,3 +1,7 @@
+:root{
+  --neon-border-color:#F50057;
+}
+
 .main-container {
   display: flex;
   width: 100vw;
@@ -30,8 +34,25 @@
   align-items: center;
   height: 16vh;
   width: 24vw;
-  border: 1px solid black;
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  animation: flicker 2.5s infinite alternate;  
+
 }
+
+.subfield::-moz-selection {
+  background-color: var(--neon-border-color);
+}
+
+.subfield::selection {
+  background-color: var(--neon-border-color);
+}
+
+.subfield:focus {
+  outline: none;
+}
+
 
 .gameboard-container {
   display: flex;
@@ -93,28 +114,9 @@
 
   font-size: 20px;
   animation: pulsate 1.5s infinite alternate;
-  /* border: 0.2rem solid #fff;
-      border-radius: 2rem;
-      padding: 0.4em; */
-  /* box-shadow: 0 0 .2rem #fff,
-                0 0 .2rem #fff,
-                0 0 2rem #bc13fe,
-                0 0 0.8rem #bc13fe,
-                0 0 2.8rem #bc13fe,
-                inset 0 0 1.3rem #bc13fe;  */
 
-  /* text-align: center;
-    font-weight: 400;  */
 }
 
-/* body {
-    font-size: 18px;
-    font-family: "Sacramento", sans-serif;
-    background-color: #010a01;
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-  }   */
 
 @keyframes pulsate {
   100% {
@@ -126,6 +128,29 @@
     text-shadow: 0 0 2px #fff, 0 0 10px #bc13fe;
   }
 }
+
+/* Animate neon flicker */
+@keyframes flicker {
+    
+  100% {
+      box-shadow:
+          0 0 .5rem #fff,
+          inset 0 0 .5rem #fff,
+          0 0 1rem #F50057,
+          inset 0 0 1rem #F50057      
+  }
+  
+  0%{
+    box-shadow:
+    0 0 .2rem #fff,
+    inset 0 0 .2rem #fff,
+    0 0 .5rem #F50057,
+    inset 0 0 .5rem #F50057;
+  }
+  
+}
+
+
 
 .pool-table {
   display: flex;

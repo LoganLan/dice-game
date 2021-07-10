@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GameLogicService } from '../service/game-logic.service';
 import { PlayersInfo } from '../model/playersinfo';
@@ -14,12 +14,17 @@ export class GameBoardPageComponent implements OnInit {
 
   numberOfPlayers!: any;
   numberOfAlivePlayers!: number;
-  numberOfDices!: void;
+  numberOfDices!: any;
   playersLives: any = [];
   playersScore: any = []
   diceRolls: any = [];
 
   dice:any[] =[]
+
+  // @HostListener('window:beforeunload') goToPage() {
+  //   this.router.navigate(['']);
+  // }
+
 
   constructor(private gameLogic: GameLogicService, private router:Router) { 
     this.dice = [
@@ -33,7 +38,7 @@ export class GameBoardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    
     this.gameStart();
   }
 
@@ -48,12 +53,21 @@ export class GameBoardPageComponent implements OnInit {
     console.log(this.numberOfDices, 'Dice Num');
     console.log(this.playersLives, ' players Lives');
     console.log(this.numberOfAlivePlayers, 'number of alive players');
+    this.emptyCheck();
   }
 
   btnDiceRoll(): any {
     this.gameLogic.diceRollBTN();
     this.diceRolls = this.gameLogic.returnDiceRolls();
 
+  }
+
+  emptyCheck(){
+    console.log(this.numberOfPlayers, 'Player Num1');
+    console.log(this.numberOfDices, 'Dice Num1');
+    if (this.numberOfPlayers === undefined  && this.numberOfDices === undefined){
+      this.router.navigate(['']);
+    }
   }
 
 }

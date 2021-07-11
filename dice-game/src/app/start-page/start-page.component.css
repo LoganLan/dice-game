@@ -1,54 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-
-.slider-tiles{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
-    
+.slider-tiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 ::ng-deep .mat-accent .mat-slider-thumb {
-    background-color: black;
-    opacity: 100;
-    border-color: rgb(0, 0, 0);
-} 
+  background-color: black;
+  opacity: 100;
+  border-color: rgb(0, 0, 0);
+}
 ::ng-deep .mat-accent .mat-slider-thumb-label {
-    background-color: black;
-    opacity: 100;
-    border-color: rgb(0, 0, 0);
-} 
+  background-color: black;
+  opacity: 100;
+  border-color: rgb(0, 0, 0);
+}
 ::ng-deep .mat-accent .mat-slider-track-fill {
-    background-color: black;
-    opacity: 100;
-    border-color: rgb(0, 0, 0);
-} 
-::ng-deep .mat-accent .mat-slider-thumb-label-showing{
-    background-color: black;
-    opacity: 100;
-    border-color: rgb(0, 0, 0);
+  background-color: black;
+  opacity: 100;
+  border-color: rgb(0, 0, 0);
 }
-::ng-deep .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
-    border-color: rgb(0, 0, 0);
-    background-color: #000000;
+::ng-deep .mat-accent .mat-slider-thumb-label-showing {
+  background-color: black;
+  opacity: 100;
+  border-color: rgb(0, 0, 0);
 }
-
-mat-slider{ 
-    width:10vw;
-    justify-content: center;
-    color:"primary";
-    ;
+::ng-deep
+  .mat-slider-min-value:not(.mat-slider-thumb-label-showing)
+  .mat-slider-thumb {
+  border-color: rgb(0, 0, 0);
+  background-color: #000000;
 }
 
+mat-slider {
+  width: 10vw;
+  justify-content: center;
+  color: "primary";
+}
 
-.tiles-color{
-    background-color: chartreuse;
-   
+.tiles-color {
+  background-color: rgb(24, 223, 30);
 }
-button{
-    height: 10vh;
-    width: 40vw;
+button {
+  height: 10vh;
+  width: 40vw;
 }
-.instructions{
-    font-size: large;
+.instructions {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-transform: uppercase;
+}
+.text-display {
+  color: rgb(246, 245, 248);
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #bc13fe,
+    0 0 5px #bc13fe, 0 0 10px #bc13fe, 0 0 12px #bc13fe, 0 0 14px #bc13fe;
+
+  font-size: 20px;
+  animation: pulsate 1.5s infinite alternate;
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 1px #fff, 0 0 4px #bc13fe, 0 0 5px #bc13fe,
+      0 0 10px #bc13fe, 0 0 12px #bc13fe, 0 0 14px #bc13fe;
+  }
+
+  0% {
+    text-shadow: 0 0 2px #fff, 0 0 10px #bc13fe;
+  }
 }

@@ -55,7 +55,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 <!-- contains button that starts the game -->
-<mat-grid-list cols="1" rowHeight="33vh" class="tiles-color">
+<mat-grid-list cols="1" rowHeight="30vh" class="tiles-color">
   <mat-grid-tile>
     <button
       mat-raised-button
@@ -67,17 +67,18 @@
   </mat-grid-tile>
 </mat-grid-list>
 <!-- contains the instructions for the players to read before starting the game -->
-<mat-grid-list cols="1" rowHeight="33vh" class="tiles-color">
+<mat-grid-list cols="1" rowHeight="36vh" class="tiles-color">
   <mat-grid-tile>
-    <ul>
-      <h1>Instructions</h1>
-      <li class="instructions">Choose the number of players</li>
-      <li class="instructions">Choose the number of die per player</li>
-      <li class="instructions">Roll the dice</li>
-      <li class="instructions">
-        The player/s with the lowest roll loses a life
-      </li>
-      <li class="instructions">Each player gets 6 lives</li>
-    </ul>
+    <div class="instructions text-display ">
+      <h1>Dice Game</h1>
+      <h3>Instructions</h3>
+      <p>Choose the number of players</p>
+      <p>Choose the number of die per player</p>
+      <p> Click Button to Roll the dice</p>
+      <p>The player/s with the lowest roll loses a life</p>
+      <p>Each player gets 6 lives</p>
+      <p>Lowest Roll Ties result in both losing life</p>
+      <p>It is possible for No winners</p>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>

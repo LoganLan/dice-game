@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'game-board', component: GameBoardPageComponent },
   { path: 'winning-page', component: WinningPageComponent },
   { path: 'no-one-wins-page', component: NoOneWinsPageComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', redirectTo:'', pathMatch: 'full'},
 ]
 
 

@@ -1,16 +1,17 @@
+<div class="tiles-color">
 <mat-grid-list cols="2" rowHeight="34vh" class="tiles-color">
   <!--Grid Tiles 1 and 2 contain sliders for the number of players and dice per player-->
 
   <mat-grid-tile class="tiles-color">
     
       <div class="slider-tiles">
-        <ul>
+        <ul class="text-font">
           Number Of Players
         </ul>
         <ul>
           <mat-slider
             #playerNumSliderValue
-            class="slider-color"
+            
             tickInterval="1"
             min="2"
             max="4"
@@ -19,7 +20,7 @@
             (change)="updatePlayerNumSliderValue($event)"
           ></mat-slider>
         </ul>
-        <ul>
+        <ul class="text-font">
           {{
             playerNumSliderValue.value
           }}
@@ -30,7 +31,7 @@
 
   <mat-grid-tile>
     <div class="slider-tiles">
-      <ul>
+      <ul class="text-font">
         Number Of Dice Per Player
       </ul>
       <ul >
@@ -46,7 +47,7 @@
           (change)="updateNumberDiceSliderValue($event)"
         ></mat-slider>
       </ul>
-      <ul>
+      <ul class="text-font">
         {{
           numberDice.value
         }}
@@ -70,15 +71,14 @@
 <mat-grid-list cols="1" rowHeight="36vh" class="tiles-color">
   <mat-grid-tile>
     <div class="instructions text-display ">
-      <h1>Dice Game</h1>
-      <h3>Instructions</h3>
+      <h1>Instructions</h1>
       <p>Choose the number of players</p>
-      <p>Choose the number of die per player</p>
+      <p>Choose the number of dice per player</p>
       <p> Click Button to Roll the dice</p>
       <p>The player/s with the lowest roll loses a life</p>
       <p>Each player gets 6 lives</p>
-      <p>Lowest Roll Ties result in both losing life</p>
       <p>It is possible for No winners</p>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+</div>

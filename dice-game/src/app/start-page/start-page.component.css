@@ -41,7 +41,14 @@ mat-slider {
   justify-content: center;
   color: "primary";
 }
+.text-font{
+    color: rgb(246, 245, 248);
 
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #bc13fe,
+         0 0 5px #bc13fe, 0 0 10px #bc13fe, 0 0 12px #bc13fe, 0 0 14px #bc13fe;
+    
+    animation: pulsate 1.5s infinite alternate;
+}
 .tiles-color {
   background-color: rgb(24, 223, 30);
 }

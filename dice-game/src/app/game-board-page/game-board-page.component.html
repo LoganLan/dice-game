@@ -5,10 +5,10 @@
         <div class="text-display">Player 1</div>
       </div>
       <div class="subfield col-4 text-diplay">
-        <div class="text-display">Player 1 lives {{ playersLives[0] }}</div>
+        <div class="text-display">Lives {{ playersLives[0] }}</div>
       </div>
       <div class="subfield col-4 text-diplay">
-        <div class="text-display">Player 1 Score {{ playersScore[0] }}</div>
+        <div class="text-display">Score {{ playersScore[0] }}</div>
       </div>
     </div>
     <div *ngIf="numberOfPlayers >= 2 && playersLives[1] > 0" class="row">
@@ -16,10 +16,10 @@
         <div class="text-display">Player 2</div>
       </div>
       <div class="subfield col-4 text-diplay">
-        <div class="text-display">Player 2 lives {{ playersLives[1] }}</div>
+        <div class="text-display">Lives {{ playersLives[1] }}</div>
       </div>
       <div class="subfield col-4 text-diplay">
-        <div class="text-display">Player 2 score {{ playersScore[1] }}</div>
+        <div class="text-display">Score {{ playersScore[1] }}</div>
       </div>
     </div>
     <div *ngIf="numberOfPlayers >= 3 && playersLives[2] > 0" class="row">
